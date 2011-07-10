@@ -1,3 +1,9 @@
+
+http://blog.raducojocaru.com/2010/07/02/nodejs-vs-php-apache/
+http://zgadzaj.com/benchmarking-nodejs-basic-performance-tests-against-apache-php
+
+
+
 Node.js
 
 Overview
