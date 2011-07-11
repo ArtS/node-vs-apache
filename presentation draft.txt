@@ -46,7 +46,8 @@ Performance
 
 [nginx vs apache charts]
 [php vs node chart]
-mention that apache is a sort of humpty-dumpty
+mention that apache is a sort of Humpty Dumpty
+mention apache is better at serving static files
 
 
 
