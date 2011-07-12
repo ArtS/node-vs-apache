@@ -1,60 +1,61 @@
-
-http://blog.raducojocaru.com/2010/07/02/nodejs-vs-php-apache/
-http://zgadzaj.com/benchmarking-nodejs-basic-performance-tests-against-apache-php
-
-
-
 Node.js
 
 Overview
-Server-side Javascript (Gogle V8)
-Single-thread
-Asynchronous, evented I/O
-Runs *nix, actively developed on Windows
 
-Architecture
-Chrome V8 Javascript Engine
-
-	V8 compiles all JavaScript to native code, no intermediate language, no interpretation etc. Crazy fast
-
-	Two compilers:
-
-∘ one that runs fast and produces generic code (full-godegen)
-∘ one that doesn't run as fast but does try to produce optimized code.
-
-	The first time V8 sees a function, it parses it to the Abstract Syntax Tree but doesn't actually do anything with it.
-
-	When function is run  first time, V8 runs the generic compiler without a lot of optimisation (called full-codegen). 
-	But after things have started up, it kicks off a profiler thread to see how things are going, and what functions are hot.
-
-	Once V8 has identified that a function is hot and has collected some type feedback information, it tries to run the augmented AST 		through an optimizing compiler.
-
-	(see http://wingolog.org/archives/2011/07/05/v8-a-tale-of-two-compilers?utm_source=javascriptweekly&utm_medium=email for 		more details)
-
-
-libev for event management
-libeio for async file/network I/O
-c-ares for async DNS
-OpenSSL for TLS/SSL
-
-Issues: 
-	- Some issues with large data structures - V8 does not seem to be able to allocate more than 512MB/1GB (x86/x64) on the heap
-	- Copying strings from V8 heap is slow - my test for serving static files confirm that - Apache tends to outperform node.js here
-
+    Server-side Javascript (Gogle V8)
+    Single-thread
+    Asynchronous, evented I/O
+    Runs *nix, actively developed on Windows
 
 Performance
 
-[nginx vs apache charts]
-[php vs node chart]
-mention that apache is a sort of Humpty Dumpty
-mention apache is better at serving static files
+    [nginx vs apache charts]
+    [php vs node chart]
+    mention that apache is a sort of Humpty Dumpty
+    mention apache is better at serving static files
 
 
+Architecture
 
-Asynchronous vs Multi-threaded
+    libev for event management
+    libeio for async file/network I/O
+    c-ares for async DNS
+    OpenSSL for TLS/SSL
 
-Issues with multi-threading
-Events/callbacks are natural in Javascript
+    Chrome V8 Javascript Engine
+
+        V8 compiles all JavaScript to native code, no intermediate language, no interpretation etc. Crazy fast
+
+        Two compilers:
+
+        ∘ one that runs fast and produces generic code (full-godegen)
+        ∘ one that doesn't run as fast but does try to produce optimized code.
+
+        The first time V8 sees a function, it parses it to the Abstract Syntax Tree but doesn't actually do anything with it.
+
+        When function is run  first time, V8 runs the generic compiler without a lot of optimisation (called full-codegen). 
+        But after things have started up, it kicks off a profiler thread to see how things are going, and what functions are hot.
+
+        Once V8 has identified that a function is hot and has collected some type feedback information, it tries to run the augmented AST 		through an optimizing compiler.
+
+        (see http://wingolog.org/archives/2011/07/05/v8-a-tale-of-two-compilers?utm_source=javascriptweekly&utm_medium=email for 		more details)
+
+
+    Issues: 
+        - Some issues with large data structures - V8 does not seem to be able to allocate more than 512MB/1GB (x86/x64) on the heap
+        - Copying strings from V8 heap is slow - my test for serving static files confirm that - Apache tends to outperform node.js here
+
+
+    Asynchronous vs Multi-threaded
+
+        Issues with multi-threading
+        Events/callbacks are natural in Javascript
+
+
+Code samples
+
+    File server
+    Ping
 
 
 Developing for Node.js
