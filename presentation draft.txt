@@ -59,14 +59,17 @@ Code samples
 
 
 Developing for Node.js
-NPM - THE package manager for Node.js
 
-• Installing things as simple as 'npm install underscore'
-• Flexible dependency resolution mechanism - each lib gets its dependencies without clashes
+    NPM - THE package manager for Node.js
 
-Debugging with Chrome Dev tools
-Cloud9
-vim !
+    • Installing things as simple as 'npm install underscore'
+    • Flexible dependency resolution mechanism - each lib gets its dependencies without clashes
+
+    Debugging with Chrome Dev tools
+
+    Cloud9
+
+    vim !
 
 
 Ecosphere
